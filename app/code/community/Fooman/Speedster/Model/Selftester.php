@@ -68,7 +68,6 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
             'app/code/community/Fooman/Speedster/Model/Selftester.php',
             'app/code/community/Fooman/Speedster/LICENSE.txt',
             'app/etc/modules/Fooman_Speedster.xml',
-            'var/minifycache/cache.txt',
             'lib/minify/m.php',
             'lib/minify/Minify.php',
             'lib/minify/SpeedsterMinify.php',
@@ -186,7 +185,7 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
                 $stepOk = false;
             }
 
-            $varPath = Mage::getBaseDir() . DS . 'var' . DS . 'minifycache';
+            $varPath = Mage::getConfig()->getVarDir('minifycache');
             if (!is_dir($varPath)) {
                 $this->messages[] = 'Verify Minification ERROR: "' . $varPath . '" does not exist (Step 3)';
                 $this->errorOccurred = true;

@@ -39,6 +39,7 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
 
         $baseJs = Mage::getBaseUrl('js');
         $baseJsFast = Mage::getBaseUrl('skin') . 'm/';
+        Mage::getConfig()->getVarDir('minifycache');
         $html = '';
         //$html = "<!--".BP."-->\n";
         $script = '<script type="text/javascript" src="%s" %s></script>';
