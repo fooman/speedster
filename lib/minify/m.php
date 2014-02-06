@@ -2,9 +2,14 @@
 // Minify Entry Point for Magento Extension Fooman Speedster
 define('DS', DIRECTORY_SEPARATOR);
 define('PS', PATH_SEPARATOR);
-define('BP', dirname(dirname(dirname(__FILE__))));
+//detect if run from a modman installation
+if(strpos(__FILE__,'.modman') !== false){
+    $baseDir = dirname(dirname(dirname(dirname(dirname(__FILE__)))));
+} else {
+    $baseDir = dirname(dirname(dirname(__FILE__)));
+}
 
-require_once BP . DS . 'lib' . DS . 'minify' . DS . 'Minify' . DS . 'Loader.php';
+require_once dirname(dirname(dirname(__FILE__))) . DS . 'lib' . DS . 'minify' . DS . 'Minify' . DS . 'Loader.php';
 Minify_Loader::register();
 
 /**
@@ -25,7 +30,7 @@ $min_documentRoot = '';
 ini_set('zlib.output_compression', '0');
 
 // Set $minifyCachePath to a PHP-writeable path to enable server-side caching
-$minifyCachePath = BP.DS.'var'.DS.'minifycache';
+$minifyCachePath = $baseDir.DS.'var'.DS.'minifycache';
 
 // The Files controller only "knows" CSS, and JS files.
 $serveExtensions = array('css', 'js');
@@ -39,10 +44,10 @@ $rootdir = '';
 $dir = explode("/lib/minify/m.php", htmlentities($_SERVER['SCRIPT_NAME']));
 if (strlen($dir[0]) == 0) {
     // we are in webroot
-    $min_symlinks = array('//' => BP);
+    $min_symlinks = array('//' => $baseDir);
 } else {
     // we are in a subdirectory adjust symlink
-    $rootdir = preg_replace('!' . $dir[0] . '$!', '', BP);
+    $rootdir = preg_replace('!' . $dir[0] . '$!', '', $baseDir);
     $min_symlinks = array('//' => $rootdir);
     //use this for ~user apache installs
     //$min_symlinks=array( '/'.$dir[0]=>$rootdir);
@@ -73,9 +78,9 @@ if (isset($_GET['f'])) {
     $servefiles = array();
     foreach ($filenames as $filename) {
         if (preg_match($filenamePattern, $filename)
-            && file_exists(BP . $filename)
+            && file_exists($baseDir . $filename)
         ) {
-            $servefiles[] = BP . $filename;
+            $servefiles[] = $baseDir . $filename;
         }
     }
 
