@@ -28,10 +28,6 @@
                 "/lib/minify/"
             ],
             [
-                "/lib/minify/.htaccess",
-                "/lib/minify/.htaccess"
-            ],
-            [
                 "/skin/m/.htaccess",
                 "/skin/m/.htaccess"
             ],
