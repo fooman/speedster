@@ -1,0 +1,44 @@
+{
+    "name": "fooman/speedster",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "homepage": "https://github.com/fooman/speedster",
+    "description": "Speed up your Magento store by combining, compressing and caching Javascript and CSS files.",
+    "authors": [
+        {
+            "name": "Kristof Ringleff",
+            "email": "kristof@fooman.co.nz"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "extra": {
+        "map": [
+            [
+                "/app/code/community/Fooman/Speedster/",
+                "/app/code/community/Fooman/Speedster/"
+            ],
+            [
+                "/app/etc/modules/Fooman_Speedster.xml",
+                "/app/etc/modules/Fooman_Speedster.xml"
+            ],
+            [
+                "/lib/minify/",
+                "/lib/minify/"
+            ],
+            [
+                "/lib/minify/.htaccess",
+                "/lib/minify/.htaccess"
+            ],
+            [
+                "/skin/m/.htaccess",
+                "/skin/m/.htaccess"
+            ],
+            [
+                "/var/minifycache/",
+                "/var/minifycache/"
+            ]
+        ]
+    }
+}

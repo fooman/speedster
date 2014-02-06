@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <foomanspeedster translate="title" module="speedster">
+                                        <title>Fooman Speedster</title>
+                                        <sort_order>40</sort_order>
+                                    </foomanspeedster>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

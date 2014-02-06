@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <fooman translate="label" module="foomancommon">
+            <label>Fooman Extensions</label>
+            <sort_order>500</sort_order>
+        </fooman>
+    </tabs>
+    <sections>
+        <foomancommon>
+            <label>Support</label>
+            <tab>fooman</tab>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <sort_order>100</sort_order>
+            <groups>
+                <!--<notifications translate="label" module="foomancommon">
+                    <label>Update Notifications</label>
+                    <comment>To receive notifications please make sure that your Magento cron.php is set up. Please refer to the Magento documentation on how to do this.</comment>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                </notifications>-->
+                <extensions translate="label" module="foomancommon">
+                    <label>Extensions Installed</label>
+                    <comment>Here you can find a list of all Fooman extensions currently installed on your system.</comment>
+                    <sort_order>101</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                </extensions>
+            </groups>
+        </foomancommon>
+    </sections>
+</config>

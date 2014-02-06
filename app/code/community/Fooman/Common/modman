@@ -1,0 +1,4 @@
+../../../../../app/code/community/Fooman/Common/                              /app/code/community/Fooman/Common/
+../../../../../app/design/adminhtml/default/default/layout/fooman_common.xml  /app/design/adminhtml/default/default/layout/fooman_common.xml
+../../../../../app/design/adminhtml/default/default/template/fooman/common/   /app/design/adminhtml/default/default/template/fooman/common/
+../../../../../app/etc/modules/Fooman_Common.xml                              /app/etc/modules/Fooman_Common.xml

@@ -1,0 +1,28 @@
+<strong>Config Version: </strong><?php echo $this->getConfigVersion(); ?><br/>
+<?php if ($this->getShowSelftestButton()): ?>
+    <br/>
+    <button class="button" title="<?php echo $this->__('Run Selftest'); ?>"
+            onclick="showModal('<?php echo $this->getSelftestButtonUrl(); ?>')" type="button"><?php echo $this->__(
+            'Run Selftest'
+        ); ?> </button>
+    <script type="text/javascript">
+        // <![CDATA[
+        function showModal(url) {
+            winModal = new Window({
+                className: 'magento',
+                title: 'Selftest',
+                url: url,
+                width: 820,
+                height: 475,
+                minimizable: false,
+                maximizable: false,
+                showEffectOptions: {duration: 0.4},
+                hideEffectOptions: {duration: 0.4}
+            });
+            winModal.setZIndex(100);
+            winModal.showCenter(true);
+        }
+        // ]]>
+    </script>
+<?php endif;?>
+&nbsp;

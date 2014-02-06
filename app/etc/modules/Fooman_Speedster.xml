@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Fooman_Speedster>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Page/>
+                <Mage_Adminhtml/>
+            </depends>
+        </Fooman_Speedster>
+    </modules>
+</config>

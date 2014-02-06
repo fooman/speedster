@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+
+############################################
+## enable rewrites
+
+    Options +FollowSymLinks
+    RewriteEngine on
+    #some setups require the below rule to be uncommented
+    #prepend it if you are running magento from a subfolder
+    #http://example.com/magento/store/ would become RewriteBase /magento/store/skin/m/
+    #RewriteBase /skin/m/
+
+############################################
+## Compress, Combine and Cache Javascript/CSS
+    RewriteRule ^([^/]+)(/.*.(js|css))$ ../../lib/minify/m.php?f=$2&d=$1
+
+</IfModule>

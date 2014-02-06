@@ -1,0 +1,6 @@
+../../../../../app/code/community/Fooman/Speedster/  /app/code/community/Fooman/Speedster/
+../../../../../app/etc/modules/Fooman_Speedster.xml  /app/etc/modules/Fooman_Speedster.xml
+../../../../../lib/minify/                           /lib/minify/
+../../../../../lib/minify/.htaccess                  /lib/minify/.htaccess
+../../../../../skin/m/.htaccess                      /skin/m/.htaccess
+../../../../../var/minifycache/                      /var/minifycache/
