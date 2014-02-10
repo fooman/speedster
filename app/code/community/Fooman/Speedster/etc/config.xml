@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Fooman_Speedster>
-            <version>3.0.11</version>
+            <version>3.0.12</version>
         </Fooman_Speedster>
     </modules>
     <global>
