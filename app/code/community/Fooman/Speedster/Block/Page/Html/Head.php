@@ -37,6 +37,7 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
 
         $lines = array();
 
+        $baseUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
         $baseJs = Mage::getBaseUrl('js');
         $baseJsFast = Mage::getBaseUrl('skin') . 'm/';
         Mage::getConfig()->getVarDir('minifycache');
@@ -79,7 +80,7 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
                     break;
 
                 case 'skin_css':
-                    $skin_root_path = str_replace(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB), '/', $this->getSkinUrl($item['name']));
+                    $skin_root_path = str_replace($baseUrl, '/', $this->getSkinUrl($item['name']));
 
                     if ($item['params'] == 'media="all"') {
                         $lines[$if]['stylesheet'][] = "/" . $skin_root_path;
