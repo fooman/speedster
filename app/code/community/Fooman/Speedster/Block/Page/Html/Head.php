@@ -24,7 +24,6 @@
  * @package Fooman_Speedster
  * @author  Kristof Ringleff <kristof@fooman.co.nz>
  */
-
 class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
 {
 
@@ -75,7 +74,29 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
 
                 case 'skin_js':
                     $chunks = explode('/skin', $this->getSkinUrl($item['name']), 2);
-                    $lines[$if]['script']['skin'][] = "/" . $webroot . "skin" . $chunks[1];
+                    $skinJsURL = "/" . $webroot . "skin" . $chunks[1];
+
+                    if (strpos($item['name'], '.min.js') !== false) {
+                        $skinJsLoc = BP . DS . "skin" . $chunks[1];
+                        $skinJsContent = file_get_contents($skinJsLoc);
+                        if (preg_match('/@ sourceMappingURL=([^\s]*)/s', $skinJsContent, $matches)) {
+                            //create a file without source map
+                            $md5 = md5($skinJsContent);
+                            $skinJsLoc = str_replace('.min.js', '.' . $md5 . '.min.js', $skinJsLoc);
+                            $skinJsURL = str_replace('.min.js', '.' . $md5 . '.min.js', $skinJsURL);
+                            if (!file_exists($skinJsLoc)) {
+                                file_put_contents(
+                                    $skinJsLoc,
+                                    str_replace(
+                                        $matches[0], 'orig file with source map: ' . $this->getSkinUrl($item['name']),
+                                        $skinJsContent
+                                    )
+                                );
+                            }
+                        }
+                    }
+
+                    $lines[$if]['script']['skin'][] = $skinJsURL;
                     break;
 
                 case 'skin_css':
@@ -114,7 +135,12 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
 
         foreach ($lines as $if => $items) {
             if (!empty($if)) {
-                $html .= '<!--[if ' . $if . ']>' . "\n";
+                // open !IE conditional using raw value
+                if (strpos($if, "><!-->") !== false) {
+                    $html .= $if . "\n";
+                } else {
+                    $html .= '<!--[if '.$if.']>' . "\n";
+                }
             }
             if (!empty($items['stylesheet'])) {
                 $cssBuild = Mage::getModel('speedster/buildSpeedster', array($items['stylesheet'], BP));
@@ -161,7 +187,12 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
                 $html .= join("\n", $items['other']) . "\n";
             }
             if (!empty($if)) {
-                $html .= '<![endif]-->' . "\n";
+                // close !IE conditional comments correctly
+                if (strpos($if, "><!-->") !== false) {
+                    $html .= '<!--<![endif]-->' . "\n";
+                } else {
+                    $html .= '<![endif]-->' . "\n";
+                }
             }
         }
         return $html;
