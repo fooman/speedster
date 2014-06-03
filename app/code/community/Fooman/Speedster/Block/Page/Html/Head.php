@@ -81,9 +81,9 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
                         $skinJsContent = file_get_contents($skinJsLoc);
                         if (preg_match('/@ sourceMappingURL=([^\s]*)/s', $skinJsContent, $matches)) {
                             //create a file without source map
-                            $md5 = md5($skinJsContent);
-                            $skinJsLoc = str_replace('.min.js', '.' . $md5 . '.min.js', $skinJsLoc);
-                            $skinJsURL = str_replace('.min.js', '.' . $md5 . '.min.js', $skinJsURL);
+                            $hash = md5($skinJsContent);
+                            $skinJsLoc = str_replace('.min.js', '.' . $hash . '.min.js', $skinJsLoc);
+                            $skinJsURL = str_replace('.min.js', '.' . $hash . '.min.js', $skinJsURL);
                             if (!file_exists($skinJsLoc)) {
                                 file_put_contents(
                                     $skinJsLoc,
