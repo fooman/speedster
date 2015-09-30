@@ -15,7 +15,7 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
 
     const MANUAL_URL = 'http://cdn.fooman.co.nz/media/custom/upload/InstructionsandTroubleshooting-FoomanSpeedster.pdf';
 
-    public function main()
+    public function main($fix = false)
     {
         $this->_checkModuleOutput();
         $this->_checkPermissions();
