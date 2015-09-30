@@ -46,6 +46,9 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
         $alternate = '<link rel="alternate" type="%s" href="%s" %s />';
 
         foreach ($this->_data['items'] as $item) {
+            if (is_null($item['name'])) {
+                continue;
+            }
             if (!is_null($item['cond']) && !$this->getData($item['cond'])) {
                 continue;
             }
