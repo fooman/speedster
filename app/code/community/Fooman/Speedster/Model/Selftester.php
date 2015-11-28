@@ -144,6 +144,15 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
         try {
             $url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'lib/minify/m.php';
             $client = new Zend_Http_Client($url);
+
+            /* HHVM fix for "Invalid chunk size" */
+            if($this->_is_hhvm()) {
+            	$client->setConfig(array(
+                	'httpversion' => Zend_Http_Client::HTTP_0 
+            	));
+            }
+            /* eof fix */	
+            
             $response = $client->request();
 
             if ($response->getBody() != 'HTTP/1.0 404 Not Found') {
@@ -170,6 +179,14 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
             $url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'skin/frontend/default' .
                 '/default/css/print.css';
             $client = new Zend_Http_Client($url);
+            /* HHVM fix for "Invalid chunk size" */
+            if($this->_is_hhvm()) {
+            	$client->setConfig(array(
+                	'httpversion' => Zend_Http_Client::HTTP_0 
+            	));
+            }	
+            /* eof fix */
+
             $response = $client->request();
             $originalLength = $response->getHeader('Content-Length');
 
@@ -235,6 +252,14 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
             $url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'skin/frontend/default' .
                 '/default/css/print.css';
             $client = new Zend_Http_Client($url);
+            /* HHVM fix for "Invalid chunk size" */
+            if($this->_is_hhvm()) {
+            	$client->setConfig(array(
+                	'httpversion' => Zend_Http_Client::HTTP_0 
+            	));
+            }
+            /* eof fix */
+
             $response = $client->request();
             $originalLength = $response->getHeader('Content-Length');
 
@@ -302,6 +327,10 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
                 $this->messages[] = 'Step 5 - OK';
             }
         }
+    }
+    
+    protected function _is_hhvm() {
+    	return defined('HHVM_VERSION');
     }
 
 }
