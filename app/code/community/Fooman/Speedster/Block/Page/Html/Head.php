@@ -103,12 +103,12 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
                     break;
 
                 case 'skin_css':
+                    $skin_root_path = parse_url($this->getSkinUrl($item['name']), PHP_URL_PATH);
+
                     if ($item['params'] == 'media="all"') {
-                        $chunks = explode('/skin', $this->getSkinUrl($item['name']), 2);
-                        $lines[$if]['stylesheet'][] = "/" . $webroot . "skin" . $chunks[1];
+                        $lines[$if]['stylesheet'][] = "/" . $skin_root_path;
                     } elseif ($item['params'] == 'media="print"') {
-                        $chunks = explode('/skin', $this->getSkinUrl($item['name']), 2);
-                        $lines[$if]['stylesheet_print'][] = "/" . $webroot . "skin" . $chunks[1];
+                        $lines[$if]['stylesheet_print'][] = "/" . $skin_root_path;
                     } else {
                         $lines[$if]['other'][] = sprintf(
                             $stylesheet, $this->getSkinUrl($item['name']), $item['params']
