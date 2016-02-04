@@ -188,13 +188,13 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
             /* eof fix */
 
             $response = $client->request();
-            $originalLength = $response->getHeader('Content-Length');
+            $originalLength = strlen($response->getRawBody());;
 
             $url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'lib/minify/m.php?f=/skin/frontend/default' .
                 '/default/css/print.css';
             $client->setUri($url);
             $response = $client->request();
-            $minifiedLength = $response->getHeader('Content-Length');
+            $minifiedLength = strlen($response->getRawBody());;
 
 
             if ($minifiedLength >= $originalLength) {
@@ -261,7 +261,7 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
             /* eof fix */
 
             $response = $client->request();
-            $originalLength = $response->getHeader('Content-Length');
+            $originalLength = strlen($response->getRawBody());;
 
             $moduleVersion = (string)Mage::getConfig()->getNode()->modules->Fooman_Speedster->version;
 
@@ -277,7 +277,7 @@ class Fooman_Speedster_Model_Selftester extends Fooman_Common_Model_Selftester
 
             $client->setUri($url);
             $response = $client->request();
-            $minifiedLength = $response->getHeader('Content-Length');
+            $minifiedLength = strlen($response->getRawBody());;
 
             if ($minifiedLength >= $originalLength) {
                 $this->messages[]
