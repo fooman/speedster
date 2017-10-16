@@ -2,7 +2,7 @@ Fooman Speedster
 ===================
 
 ### Installation Instructions
-To install the extension, follow the steps in [The Ultimate Guide to Installing Magento Extensions](http://cdn.fooman.co.nz/media/custom/upload/TheUltimateGuidetoInstallingMagentoExtensions.pdf) and [Fooman Speedster Instructions and Troubleshooting Guide](http://cdn.fooman.co.nz/media/custom/upload/InstructionsandTroubleshooting-FoomanSpeedster.pdf).
+To install the extension, follow the steps outlined in our [Installation Guide](http://magento1-support.fooman.co.nz/category/936-install-set-up-user-manual).
 
 ### Installation Options
 
