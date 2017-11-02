@@ -201,7 +201,7 @@ class Fooman_Speedster_Block_Page_Html_Head extends Mage_Page_Block_Html_Head
         return $html;
     }
 
-    public function getChunkedItems($items, $prefix = '', $maxLen = 2000)
+    public function getChunkedItems($items, $prefix = '', $maxLen = 1000)
     {
         if (!Mage::getStoreConfigFlag('foomanspeedster/settings/enabled')) {
             return parent::getChunkedItems($items, $prefix, 450);
